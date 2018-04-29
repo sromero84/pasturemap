@@ -36,18 +36,11 @@ class Animal(models.Model):
 
         times = []
         weights = []
-        for entry in self.weight_entries.all():
+        for entry in self.weight_entries.order_by('weigh_datetime'):
             times.append(entry.weigh_datetime.timestamp())  # use timestamp for interpolate
             weights.append(entry.weight)
 
-        if weight_entries_count == 1:
-            kind = 'linear'
-        elif weight_entries_count == 2:
-            kind = 'quadratic'
-        else:
-            kind = 'cubic'
-
-        extrapolation = interpolate.interp1d(times, weights, kind, fill_value='extrapolate')
+        extrapolation = interpolate.interp1d(times, weights, fill_value='extrapolate')
         return Decimal(extrapolation(ask_datetime.timestamp()).item(0))
 
     def get_weight_entries(self):
