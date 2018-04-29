@@ -8,5 +8,6 @@ Once running, you can also navigate the API by creating and user, authenticating
 I was not able to add Unit Tests for models given the time and having to leave, I've chosen to add the tests to the API endpoint, which use the model methods. But I consider the `calculate_weight` method of `Animal` class should have its own test.
 
 Consulted information:
-- https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html
+- https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html (first time use)
+- http://www.django-rest-framework.org/
 
